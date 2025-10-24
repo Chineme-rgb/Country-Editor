@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Country Archive</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #searchBar {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    #results li {
+      margin: 5px 0;
+    }
+    #results li a {
+      text-decoration: none;
+      color: #333;
+    }
+    #results li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌍 Country Archive</h1>
+  <input type="text" id="searchBar" placeholder="Search for a country...">
+  <ul id="results"></ul>
+
+  <script>
+    const countries = [
+      { name: "Canada", code: "CA", file: "canada.html" },
+      { name: "Japan", code: "JP", file: "japan.html" },
+      { name: "Nigeria", code: "NG", file: "nigeria.html" },
+      { name: "Germany", code: "DE", file: "germany.html" },
+      { name: "Brazil", code: "BR", file: "brazil.html" }
+    ];
+
+    const searchBar = document.getElementById("searchBar");
+    const results = document.getElementById("results");
+
+    searchBar.addEventListener("input", function() {
+      const query = searchBar.value.toLowerCase();
+      results.innerHTML = "";
+
+      const matches = countries.filter(c =>
+        c.name.toLowerCase().includes(query) || c.code.toLowerCase().includes(query)
+      );
+
+      matches.forEach(c => {
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="/public/countries/${c.file}">${c.name} (${c.code})</a>`;
+        results.appendChild(li);
+      });
+    });
+  </script>
+</body>
+</html>
