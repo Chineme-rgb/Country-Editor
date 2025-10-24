@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Country Editor</title>
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+    <script src="scripts/mapLogic.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        #sidebar {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #003d80;
+        }
+    </style>
+</head>
+<body>
+    <h1>Country Data Editor</h1>
+    <div id="mapdiv" style="width: 100%; height: 500px;"></div>
+    <div id="sidebar">
+        <h3>📝 Rename Country</h3>
+        <form id="renameForm">
+            <label for="countryCode">Code (e.g., US):</label>
+            <input type="text" id="countryCode" required>
+
+            <label for="newName">New Name:</label>
+            <input type="text" id="newName" required>
+
+            <button type="submit">Rename</button>
+        </form>
+        <div id="renameResult"></div>
+        <h3>📊 Compare Countries</h3>
+        <form id="compareForm">
+            <label for="countryA">Country A Code:</label>
+            <input type="text" id="countryA" required>
+
+            <label for="countryB">Country B Code:</label>
+            <input type="text" id="countryB" required>
+
+            <button type="submit">Compare</button>
+        </form>
+        <div id="comparisonResult"></div>
+        </div>
+
+</body>
+</html>
